@@ -1,5 +1,10 @@
-const app = require("./server");
+require('dotenv').config({
+    path: process.env.NODE_ENV == 'test' ? '.env.test' : '.env'
+});
+const express = require("express");
 
-app.listen(process.env.PORT || 3000, (req, res) => {
-    console.log("Servidor rodando na porta 3000")
-})
+const app = express();
+app.use(express.json());
+app.use(require('./routes'));
+
+module.exports = app;

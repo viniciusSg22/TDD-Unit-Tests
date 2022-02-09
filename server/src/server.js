@@ -1,7 +1,5 @@
-const express = require("express");
+const app = require("./server");
 
-const app = express();
-app.use(express.json());
-app.use(require('./routes'));
-
-module.exports = app;
+app.listen(process.env.PORT || 3000, (req, res) => {
+    console.log("Servidor rodando na porta 3000")
+})
